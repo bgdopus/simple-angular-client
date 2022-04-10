@@ -11,7 +11,8 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { ToastrModule } from 'ngx-toastr';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatIconModule} from '@angular/material/icon'
 
 @NgModule({
   declarations: [
@@ -22,6 +23,8 @@ import { ToastrModule } from 'ngx-toastr';
   ],
   imports: [
     BrowserModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
