@@ -34,7 +34,7 @@ export class SignupComponent implements OnInit {
     if(this.signupForm.invalid) return;
     this.authService.onCreateUser(this.signupForm.value).subscribe(res=> {
       if(res) {
-        this.toastr.success("Accounta is created. Pleas log in.");
+        this.toastr.success("Account is created. Pleas log in.");
         this.router.navigate(['auth/login']);
         console.log('resssssssssssssss', res);
       }

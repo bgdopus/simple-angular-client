@@ -52,6 +52,12 @@ export class ProductService {
       )
     }
 
+    triggerTask(): Observable<any> {
+      return this.http.get(`${this.apiUrl}/long-running-job`).pipe(
+        catchError(this.handleError<any>('Long running job'))
+      )
+    }
+
 
 
     private handleError<T>(operation = 'operation', result?: T) {
