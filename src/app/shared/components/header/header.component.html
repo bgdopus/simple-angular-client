@@ -1,0 +1,26 @@
+<div class="main-nav">
+  <nav class="navbar navbar-expand-lg navbar-light text-light bg-primary fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" [routerLink]="['/']">Home</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li *ngIf="isUserLoggedIn" class="nav-item">
+            <a class="nav-link active" aria-current="page" [routerLink]="['/products/list']">Products</a>
+          </li>
+          <li *ngIf="isUserLoggedIn" class="nav-item">
+            <a class="nav-link active" aria-current="page" [routerLink]="['/products/list']">Long running job</a>
+          </li>
+        </ul>
+        <div class="d-flex gap-2">
+            <a *ngIf="!isUserLoggedIn" [routerLink]="['/auth/login']" class="btn btn-light text-dark">Login</a>
+            <a *ngIf="isUserLoggedIn" (click)="onLogout()" class="btn btn-light text-dark logoutBtn">Logout</a>
+            <a *ngIf="!isUserLoggedIn" [routerLink]="['/auth/signup']" class="btn btn-light text-dark">Signup</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+</div>

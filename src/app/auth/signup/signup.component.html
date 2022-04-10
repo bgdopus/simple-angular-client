@@ -1,0 +1,25 @@
+<div class="signup-page py-3">
+    <div class="bg-info p-4 form-body">
+        <h3 class="text-center mb-4">Signup</h3>
+        <form [formGroup]="signupForm">
+            <div class="form-group mb-3">
+                <label for="username" class="mb-1">Username</label>
+                <input type="username" id="username" class="form-control" formControlName="username" placeholder="Enter first username">
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="password" class="mb-1">Password:</label>
+                <input type="password" id="password" class="form-control" formControlName="password" placeholder="Enter password">
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword" class="mb-1">Confirm Password:</label>
+                <input type="password" id="confirmPassword" class="form-control" formControlName="confirmPassword" placeholder="Confirm Password">
+            </div>
+
+            <div class="submit mt-4">
+                <button type="button" class="btn btn-primary w-100 text-center signup" (click)="onSignup()" [disabled]="signupForm.invalid">Signup</button>
+            </div>
+        </form>
+    </div>
+</div>

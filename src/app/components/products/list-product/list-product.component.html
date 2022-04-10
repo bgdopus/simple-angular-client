@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <div class="pt-3">
+        <button class="btn btn-info btn-sm" [routerLink]="['/products/add']">Add New</button>
+    </div>
+    <div class="table table-responsive">
+        <table class="table table-striped w-100">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products" class="product_Row">
+                    <td>{{product.name}}</td>
+                    <td>{{product.type}}</td>
+                    <td>{{product.description}}</td>
+                    <!-- <td>
+                        <span *ngIf="product.status">Available</span>
+                        <span *ngIf="!product.status">Out of stock</span>
+                    </td> -->
+                    <td class="d-flex action_column">
+                        <button class="btn btn-sm btn-info" [routerLink]="['/products/add']" [queryParams]="product">Edit</button>
+                        <button class="btn btn-sm btn-danger ml-2 deleteBtn" (click)="onDeleteProduct(product.id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
