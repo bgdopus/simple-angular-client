@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IDeactivateGuard } from 'src/app/shared/guards/auth.guard';
 import { ProductService } from '../services/product.service';
-import { ActivatedRoute } from '@angular/router';
-
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -16,7 +15,8 @@ export class AddProductComponent implements OnInit, IDeactivateGuard {
 
   constructor(
     private productService: ProductService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
   ) { 
     this.route.queryParams
       .subscribe(params =>  this.params = params );
@@ -40,15 +40,11 @@ export class AddProductComponent implements OnInit, IDeactivateGuard {
 
   onAddProduct() {
     if(this.productForm.invalid) return;
-    let formData = new FormData();
-    // for(let product in this.productForm.value) {
-    //   formData.append(product, this.productForm.get(product).value)
-    // }
 
     this.productService.addNewProduct(this.productForm.value).subscribe(res=> {
       if(res) {
-        // console.log('ressssssssssssssssssss', res);
         this.productForm.reset();
+        this.router.navigate(['/products/list']);
       }
     })
   }
@@ -64,24 +60,9 @@ export class AddProductComponent implements OnInit, IDeactivateGuard {
     };
     this.productService.updateProduct(newItem).subscribe(res=> {
       if(res) {
-        // console.log('ressssssssssssssssssss', res);
         this.productForm.reset();
+        this.router.navigate(['/products/list']);
       }
     })
   }
-
-  // onImagePicked(event: Event) {
-  //   const target= event.target as HTMLInputElement;
-  //   let file = (target.files as FileList)[0];
-  //   this.productForm.get('imagePath')?.setValue(file)
-  //   this.productForm.get('imagePath')?.updateValueAndValidity();
-  //   const reader = new FileReader();
-  //   reader.onload = () => {
-  //     this.imagePreview = reader.result as string;
-  //   };
-  //   reader.readAsDataURL(file);
-  // }
-
-  
-
 }

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { BehaviorSubject } from 'rxjs';
 import { SubjectsService } from 'src/app/shared/services/subjects.service';
 import { AuthService } from '../auth.service';
 
@@ -34,16 +33,9 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.invalid) return;
     this.authService.onLoginUser(this.loginForm.value).subscribe(res=> {
       if(res) {
-        //localStorage.setItem('user', JSON.stringify(res.user));
         localStorage.setItem('token', res.token);
-        //localStorage.setItem('expirationDuration', res.expirationDuration);
-        //const expiration: number = +localStorage.getItem('expirationDuration')!;
         this.subjectService.setUserLoginStatus(true);
         this.toastr.success("You are loged in.");
-        // setTimeout(()=> {
-        //   localStorage.clear();
-        //   this.router.navigate(['/auth/login']);
-        // },  +expiration * 1000)
         this.router.navigate(['/products/list']);
       }
     })

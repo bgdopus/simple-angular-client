@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { ProductsRoutingModule } from './products-routing.module';
 import { AddProductComponent } from './add-product/add-product.component';
-import { EditProductComponent } from './edit-product/edit-product.component';
 import { ListProductComponent } from './list-product/list-product.component';
 import { SharedModule } from 'src/app/shared/modules/shared/shared.module';
 
@@ -11,7 +10,6 @@ import { SharedModule } from 'src/app/shared/modules/shared/shared.module';
 @NgModule({
   declarations: [
     AddProductComponent,
-    EditProductComponent,
     ListProductComponent,
   ],
   imports: [
